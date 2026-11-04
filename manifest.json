@@ -1,0 +1,34 @@
+{
+  "manifest_version": 3,
+  "name": "Scrylair",
+  "version": "1.1.0",
+  "description": "Shows the cheapest Scryfall prices (non-foil and foil, USD and EUR) for each card in a Secret Lair drop.",
+  "permissions": ["storage", "unlimitedStorage"],
+  "host_permissions": ["https://api.scryfall.com/*"],
+  "background": {
+    "service_worker": "background.js"
+  },
+  "content_scripts": [
+    {
+      "matches": ["https://secretlair.wizards.com/*"],
+      "js": ["content.js"],
+      "run_at": "document_idle"
+    }
+  ],
+  "action": {
+    "default_popup": "popup.html",
+    "default_title": "Scrylair",
+    "default_icon": {
+      "16": "icons/icon16.png",
+      "32": "icons/icon32.png",
+      "48": "icons/icon48.png",
+      "128": "icons/icon128.png"
+    }
+  },
+  "icons": {
+    "16": "icons/icon16.png",
+    "32": "icons/icon32.png",
+    "48": "icons/icon48.png",
+    "128": "icons/icon128.png"
+  }
+}
