@@ -17,7 +17,7 @@ Every price links to that printing on Scryfall. Bundle pages are skipped.
 
 ## Options
 
-Click the toolbar icon to:
+Click the toolbar icon (active only on Secret Lair pages) to:
 
 - exclude Universes Beyond printings
 - show or hide USD and EUR

@@ -1,9 +1,9 @@
 {
   "manifest_version": 3,
   "name": "Scrylair",
-  "version": "1.1.0",
+  "version": "1.2.0",
   "description": "Shows the cheapest Scryfall prices (non-foil and foil, USD and EUR) for each card in a Secret Lair drop.",
-  "permissions": ["storage", "unlimitedStorage"],
+  "permissions": ["storage", "unlimitedStorage", "declarativeContent"],
   "host_permissions": ["https://api.scryfall.com/*"],
   "background": {
     "service_worker": "background.js"

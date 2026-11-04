@@ -163,8 +163,28 @@ async function lookup(candidates) {
   return null;
 }
 
-// Drop stale cache entries (possibly in an older format) on install/update.
-chrome.runtime.onInstalled.addListener(() => chrome.storage.local.clear());
+// Toolbar button: greyed out everywhere except Secret Lair pages.
+function setupActionRules() {
+  chrome.action.disable();
+  chrome.declarativeContent.onPageChanged.removeRules(undefined, () => {
+    chrome.declarativeContent.onPageChanged.addRules([
+      {
+        conditions: [
+          new chrome.declarativeContent.PageStateMatcher({
+            pageUrl: { hostEquals: 'secretlair.wizards.com' },
+          }),
+        ],
+        actions: [new chrome.declarativeContent.ShowAction()],
+      },
+    ]);
+  });
+}
+
+chrome.runtime.onInstalled.addListener(() => {
+  chrome.storage.local.clear(); // drop stale cache entries (possibly in an older format)
+  setupActionRules();
+});
+chrome.runtime.onStartup.addListener(() => chrome.action.disable());
 
 chrome.runtime.onMessage.addListener((msg, _sender, sendResponse) => {
   if (msg?.type === 'lookup') {
